@@ -3,35 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Controls animations and transitions betwen pseudoscreens and levels for main menu
+/// </summary>
 public class MainMenuManager : MonoBehaviour
 {
-    //private const int SHIFT_AMOUNT = 560;
     private const string LEVEL_TO_LOAD = "MainScene";
     public Animator screensAnim;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Animator fadeAnim;
+    public GameObject infoScreen;
+    public GameObject creditsScreen;
 
    /*Transitioning into credit or instruction screen from main, everything shifts to the left*/
     public void ShiftFromMain()
     {
+        StartCoroutine(ShiftFromMainCoroutine());
+    }
+
+    /*Plays shifting animation */
+    private IEnumerator ShiftFromMainCoroutine()
+    {
         screensAnim.SetTrigger("shiftLeft");
+        yield return null;
+        yield return new WaitForSeconds(screensAnim.GetCurrentAnimatorStateInfo(0).length);
+
     }
 
     /*Transitioning from credit or instruction screen to main, everything shifts to the right*/
     public void ShiftToMain()
     {
-        screensAnim.SetTrigger("shiftRight");
+        StartCoroutine(ShiftToMainCoroutine());
     }
 
+
+    /*Plays shifting animation */
+    private IEnumerator ShiftToMainCoroutine()
+    {
+        screensAnim.SetTrigger("shiftRight");
+        yield return null;
+        yield return new WaitForSeconds(screensAnim.GetCurrentAnimatorStateInfo(0).length);
+        creditsScreen.gameObject.SetActive(false);
+        infoScreen.gameObject.SetActive(false);
+    }
     public void Play()
     {
         StartCoroutine(PlayCoroutine());
@@ -39,8 +52,9 @@ public class MainMenuManager : MonoBehaviour
 
     private IEnumerator PlayCoroutine()
     {
-        //add any animations for fading out and yield for the duration of that animation
+        fadeAnim.SetTrigger("fadeOut");
         yield return null;
+        yield return new WaitForSeconds(fadeAnim.GetCurrentAnimatorStateInfo(0).length);
         SceneManager.LoadScene(LEVEL_TO_LOAD);
     }
 
@@ -51,8 +65,9 @@ public class MainMenuManager : MonoBehaviour
 
     private IEnumerator QuitCoroutine()
     {
-        //add any animations for fading out and yield for the duration of that animation
+        fadeAnim.SetTrigger("fadeOut");
         yield return null;
+        yield return new WaitForSeconds(fadeAnim.GetCurrentAnimatorStateInfo(0).length);
         Application.Quit();
     }
 }
