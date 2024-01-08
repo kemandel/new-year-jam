@@ -10,10 +10,13 @@ public class PlayerController : MonoBehaviour
 
     private bool moving;
 
+    private Animator animator;
+
     public void Start()
     {
         CurrentNode = C_Grid.instance.NodeFromWorldPoint(transform.position);
         moving = false;
+        animator = GetComponentInChildren<Animator>();
     }
     
     public void Update()
@@ -40,6 +43,11 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(MoveCoroutine(newNode));
             }
         }
+        else 
+        {
+            animator.SetFloat("XVel", 0);
+            animator.SetFloat("YVel", 0);
+        }
     }
 
     // Move player to new node
@@ -47,6 +55,10 @@ public class PlayerController : MonoBehaviour
     {
         moving = true;
         Node oldNode = CurrentNode;
+
+        animator.SetFloat("XVel", newNode.worldPosition.x - oldNode.worldPosition.x);
+        animator.SetFloat("YVel", newNode.worldPosition.y - oldNode.worldPosition.y);
+
         float moveTime = LevelManager.Settings.charMoveTime;
         float startTime = Time.time;
         float timePassed = 0;
