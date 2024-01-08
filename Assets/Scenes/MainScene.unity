@@ -306,6 +306,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 281762731139293973, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1860858167, guid: 7acbc2c431805064197fbac51ede4980, type: 3}
+    - target: {fileID: 281762731139293979, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 13a2cf501170bde4088bfcfd4264d4a8, type: 2}
     - target: {fileID: 281762732603092617, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -352,7 +360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 281762732603092618, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Fae
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
@@ -5493,7 +5501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 281762732603092618, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Sam
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
