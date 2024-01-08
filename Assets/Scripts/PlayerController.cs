@@ -45,8 +45,8 @@ public class PlayerController : MonoBehaviour
         }
         else 
         {
-            animator.SetFloat("XVel", 0);
-            animator.SetFloat("YVel", 0);
+            animator.SetInteger("XVel", 0);
+            animator.SetInteger("YVel", 0);
         }
     }
 
@@ -56,8 +56,8 @@ public class PlayerController : MonoBehaviour
         moving = true;
         Node oldNode = CurrentNode;
 
-        animator.SetFloat("XVel", newNode.worldPosition.x - oldNode.worldPosition.x);
-        animator.SetFloat("YVel", newNode.worldPosition.y - oldNode.worldPosition.y);
+        animator.SetInteger("XVel", Mathf.RoundToInt(newNode.worldPosition.x - oldNode.worldPosition.x));
+        animator.SetInteger("YVel", Mathf.RoundToInt(newNode.worldPosition.y - oldNode.worldPosition.y));
 
         float moveTime = LevelManager.Settings.charMoveTime;
         float startTime = Time.time;
