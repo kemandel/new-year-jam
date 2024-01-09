@@ -10,6 +10,6 @@ public class NPC : MonoBehaviour
 
     void Start()
     {
-        //FindObjectOfType<MinigameController>().StartGame(minigameData);
+        FindObjectOfType<MinigameController>().StartGame(minigameData);
     }
 }

@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
         
         if (LevelManager.activePlayer != this) return;
         if (MinigameController.Active) return;
+        if (DialogueSystem.Active) return;
 
         // Check for inputs
         Vector2Int direction = new Vector2Int(Mathf.RoundToInt(Input.GetAxisRaw("Horizontal")), Mathf.RoundToInt((int)Input.GetAxisRaw("Vertical")));
