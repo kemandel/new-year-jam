@@ -7,16 +7,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public PlayerController trailingPlayer;
-    public bool inControl;
 
     public Node CurrentNode {get; set;}
 
     private bool moving;
     private Animator animator;
+    private C_Grid grid;
 
     public void Start()
     {
-        CurrentNode = C_Grid.instance.NodeFromWorldPoint(transform.position);
+        grid = FindObjectOfType<C_Grid>();
+        CurrentNode = grid.NodeFromWorldPoint(transform.position);
         moving = false;
         animator = GetComponentInChildren<Animator>();
     }
@@ -39,13 +40,14 @@ public class PlayerController : MonoBehaviour
             animator.SetInteger("YVel", 0);
         }
         
-        if(!inControl) return;
+        if (LevelManager.activePlayer != this) return;
+        if (MinigameController.Active) return;
 
         // Check for inputs
         Vector2Int direction = new Vector2Int(Mathf.RoundToInt(Input.GetAxisRaw("Horizontal")), Mathf.RoundToInt((int)Input.GetAxisRaw("Vertical")));
         if (direction.x != 0)
         {
-            Node newNode = C_Grid.instance.grid[CurrentNode.gridX + direction.x,CurrentNode.gridY];
+            Node newNode = grid.grid[CurrentNode.gridX + direction.x,CurrentNode.gridY];
             if (newNode.walkable && newNode.currentObject == null)
             {
                 StartCoroutine(MoveCoroutine(newNode));
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (direction.y != 0)
         {
-            Node newNode = C_Grid.instance.grid[CurrentNode.gridX,CurrentNode.gridY + direction.y];
+            Node newNode = grid.grid[CurrentNode.gridX,CurrentNode.gridY + direction.y];
             if (newNode.walkable && newNode.currentObject == null)
             {
                 StartCoroutine(MoveCoroutine(newNode));
