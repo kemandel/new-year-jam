@@ -31,7 +31,7 @@ public class DialogueSystem : MonoBehaviour
     {
         if (Active)
         {
-            if (pause && Input.GetKeyDown(KeyCode.Space)){
+            if (pause && Input.anyKeyDown){
                 pause = false;
             }
         }

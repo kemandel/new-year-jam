@@ -6,4 +6,5 @@ using UnityEngine;
 public class GameSettings : ScriptableObject
 {
     public float charMoveTime = .5f;
+    public KeyCode interactKey = KeyCode.Space;
 }

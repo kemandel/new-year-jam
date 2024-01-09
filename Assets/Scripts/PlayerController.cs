@@ -9,10 +9,12 @@ public class PlayerController : MonoBehaviour
     public PlayerController trailingPlayer;
 
     public Node CurrentNode {get; set;}
+    public bool InputEnabled {get; set;} = true;
 
     private bool moving;
     private Animator animator;
     private C_Grid grid;
+    private Node interactNode;
 
     public void Start()
     {
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
         CurrentNode = grid.NodeFromWorldPoint(transform.position);
         moving = false;
         animator = GetComponentInChildren<Animator>();
+        interactNode = grid.grid[CurrentNode.gridX,CurrentNode.gridY-1];
     }
     
     public void Update()
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
         if (LevelManager.activePlayer != this) return;
         if (MinigameController.Active) return;
         if (DialogueSystem.Active) return;
+        if (!InputEnabled) return;
 
         // Check for inputs
         Vector2Int direction = new Vector2Int(Mathf.RoundToInt(Input.GetAxisRaw("Horizontal")), Mathf.RoundToInt((int)Input.GetAxisRaw("Vertical")));
@@ -52,6 +56,12 @@ public class PlayerController : MonoBehaviour
             if (newNode.walkable && newNode.currentObject == null)
             {
                 StartCoroutine(MoveCoroutine(newNode));
+                interactNode = grid.grid[CurrentNode.gridX + direction.x,CurrentNode.gridY];
+            }
+            else 
+            {
+                StartCoroutine(RotateCoroutine(direction));
+                interactNode = grid.grid[CurrentNode.gridX + direction.x,CurrentNode.gridY];
             }
         }
         else if (direction.y != 0)
@@ -60,6 +70,19 @@ public class PlayerController : MonoBehaviour
             if (newNode.walkable && newNode.currentObject == null)
             {
                 StartCoroutine(MoveCoroutine(newNode));
+                interactNode = grid.grid[CurrentNode.gridX,CurrentNode.gridY + direction.y];
+            }
+            else 
+            {
+                StartCoroutine(RotateCoroutine(direction));
+                interactNode = grid.grid[CurrentNode.gridX,CurrentNode.gridY + direction.y];
+            }
+        }
+        else if (Input.GetKeyDown(LevelManager.Settings.interactKey))
+        {
+            if (interactNode.currentObject != null && interactNode.currentObject.GetComponent<IInteractable>() != null)
+            {
+                interactNode.currentObject.GetComponent<IInteractable>().Interact();
             }
         }
     }
@@ -67,6 +90,15 @@ public class PlayerController : MonoBehaviour
     public void MoveToNode(Node node)
     {
         StartCoroutine(MoveCoroutine(node));
+    }
+
+    private IEnumerator RotateCoroutine(Vector2Int direction)
+    {
+        moving = true;
+        animator.SetInteger("XVel", direction.x);
+        animator.SetInteger("YVel", direction.y);
+        yield return null;
+        moving = false;
     }
 
     // Move player to new node
