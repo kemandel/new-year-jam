@@ -6086,13 +6086,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 281762731139293973, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 963413469, guid: ea4460a1f0777ec4d808783672c49dd8, type: 3}
+    - target: {fileID: 281762731139293979, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d9551c81d82d02b47ad54212bfd9d229, type: 2}
     - target: {fileID: 281762732603092617, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 281762732603092617, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 281762732603092617, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6136,10 +6144,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 281762732603092618, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
+--- !u!114 &1597713300 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 281762732603092616, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
+  m_PrefabInstance: {fileID: 1252916995}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e55b27e921da284c88541d660ad9ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1620938315
 GameObject:
   m_ObjectHideFlags: 0
@@ -7515,6 +7534,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c52184a171752ff4aa7c2e18689db7bb, type: 2}
+    - target: {fileID: 281762732603092616, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
+      propertyPath: trailingPlayer
+      value: 
+      objectReference: {fileID: 1597713300}
     - target: {fileID: 281762732603092617, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
       propertyPath: m_RootOrder
       value: 5
