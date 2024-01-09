@@ -11,28 +11,31 @@ public class DialogueSystem : MonoBehaviour
     /// <summary>
     /// The amount of characters that can fit on each line of the dialogue box
     /// </summary>
-    public int characterLineLimit = 18;
+    private int characterLineLimit = 40; //18
+
     public AudioSource voiceSource;
     //UI for dialogue
     private static Canvas dialogueUI;
 
+    //dialogue active status
+    public static bool Active { get; private set; }
+
+    bool pause = false;
     private void Awake()
     {
         dialogueUI = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<Canvas>();
         dialogueUI.enabled = false;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Active)
+        {
+            if (pause && Input.GetKeyDown(KeyCode.Space)){
+                pause = false;
+            }
+        }
     }
-
     public void PlayDialogue(Dialogue[] dialogue)
     {
         dialogueUI.enabled = true;
@@ -41,17 +44,31 @@ public class DialogueSystem : MonoBehaviour
 
     private IEnumerator DialogueCoroutine(Dialogue[] dialogue)
     {
+        Active = true;
         Dialogue currentDialogue;
+
         //Get the dialogueUI's text component
         TMP_Text currentText = dialogueUI.GetComponentInChildren<TMP_Text>();
-        bool pause = false;
         for (int i = 0; i < dialogue.Length; i++)
         {
-            currentDialogue = dialogue[i];
-            currentText.text = currentDialogue.speaker + '\n';
+            //get previous speaker if there is one
+            string previousSpeaker = i > 0 ? dialogue[i - 1].speaker : "";
 
+            currentDialogue = dialogue[i];
+            voiceSource.clip = currentDialogue.voice;
+
+            //if new speaker, add name at the top
+            if (previousSpeaker != currentDialogue.speaker)
+            {
+                //if playing as Sam, should be in 2nd person so no name printed
+                currentText.text = currentDialogue.speaker == "" ? "" : currentDialogue.speaker + ':' + '\n';
+            }
+            else
+            {
+                currentText.text = "";
+            }
             //dialogue before adding current dialogue
-            string startingDialogue = currentText.text;
+            //string startingDialogue = currentText.text;
 
             string[] dialogueWords = currentDialogue.dialogueText.Split(' ');
 
@@ -71,30 +88,30 @@ public class DialogueSystem : MonoBehaviour
                 //for each char in word
                 for (int k = 0; k < dialogueWords[j].Length; k++)
                 {
-                    currentText.text = activeDialogue + dialogueWords[j].Substring(k + 1);
-                    voiceSource.clip = currentDialogue.voice;
+                    currentText.text = activeDialogue + dialogueWords[j].Substring(0, k + 1);
+                    float delay = ((int)1/ 10f);
+                    //play sound of character for each dialogue line
                     voiceSource.Play(); //need to figure out if this is looping or what, if so stop it
+
+                    yield return new WaitForSeconds(delay);
                 }
 
                 if (j < dialogueWords.Length - 1)
                 {
                     currentText.text += " ";
                 }
+            }
 
-                pause = true;
+            pause = true;
 
-                while (pause)
-                {
-                    if (Input.GetKeyDown(KeyCode.KeypadEnter))
-                    {
-                        pause = false;
-                    }
-                    yield return null;
-                }
+            while (pause)
+            {
+                yield return null;
             }
         }
         dialogueUI.enabled = false;
         voiceSource.Stop();
+        Active = false;
     }
 
 }

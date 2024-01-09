@@ -11,6 +11,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         dialogueSystem = FindObjectOfType<DialogueSystem>();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -18,4 +19,5 @@ public class DialogueTrigger : MonoBehaviour
             dialogueSystem.PlayDialogue(dialogue);
         }
     }
+
 }
