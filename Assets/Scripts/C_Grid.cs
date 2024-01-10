@@ -6,7 +6,7 @@ public class C_Grid : MonoBehaviour
 {
     public float nodeRadius;
     public Vector2 gridWorldSize;
-    public Tilemap collisionMap;
+    //public Tilemap collisionMap;
     public Tilemap walkableMap;
 
     public Node[,] grid;
@@ -40,7 +40,8 @@ public class C_Grid : MonoBehaviour
             for (int y = 0; y < gridSizeY; y++)
             {
                 Vector3 worldpoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
-                bool walkable = !collisionMap.HasTile(collisionMap.WorldToCell(worldpoint)) && walkableMap.HasTile(walkableMap.WorldToCell(worldpoint));
+                //bool walkable = !collisionMap.HasTile(collisionMap.WorldToCell(worldpoint)) && walkableMap.HasTile(walkableMap.WorldToCell(worldpoint));
+                bool walkable = walkableMap.HasTile(walkableMap.WorldToCell(worldpoint));
 
                 grid[x, y] = new Node(walkable, worldpoint, x, y);
             }
