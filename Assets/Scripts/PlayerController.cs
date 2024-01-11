@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public Node CurrentNode {get; set;}
     public bool InputEnabled {get; set;} = true;
+    public int playerSortOrder;
 
     private bool moving;
     private Animator animator;
@@ -47,6 +48,16 @@ public class PlayerController : MonoBehaviour
         if (MinigameController.Active) return;
         if (DialogueSystem.Active) return;
         if (!InputEnabled) return;
+
+        // Check for player swap
+        for (int i = 0; i < LevelManager.Settings.characterSwapKeys.Length; i++)
+        {
+            if (Input.GetKeyDown(LevelManager.Settings.characterSwapKeys[i]))
+            {
+                LevelManager.SwapPlayer(i);
+                return;
+            }
+        }
 
         // Check for inputs
         Vector2Int direction = new Vector2Int(Mathf.RoundToInt(Input.GetAxisRaw("Horizontal")), Mathf.RoundToInt((int)Input.GetAxisRaw("Vertical")));

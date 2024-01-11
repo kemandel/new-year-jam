@@ -56,7 +56,7 @@ public class DialogueSystem : MonoBehaviour
     private IEnumerator DialogueCoroutine(Dialogue[] dialogue)
     {
         //fade background music out
-         StartCoroutine(soundManager.fadeAudio(2f, 0.3f));
+         StartCoroutine(soundManager.FadeMusicAudio(2f, 0.3f));
 
         Active = true;
         Dialogue currentDialogue;
@@ -69,7 +69,7 @@ public class DialogueSystem : MonoBehaviour
             string previousSpeaker = i > 0 ? dialogue[i - 1].speaker : "";
 
             currentDialogue = dialogue[i];
-            voiceSource.clip = currentDialogue.voice;
+            //voiceSource.clip = currentDialogue.voice;
 
             //if new speaker, add name at the top
             if (previousSpeaker != currentDialogue.speaker)
@@ -103,7 +103,7 @@ public class DialogueSystem : MonoBehaviour
                 for (int k = 0; k < dialogueWords[j].Length; k++)
                 {
                     currentText.text = activeDialogue + dialogueWords[j].Substring(0, k + 1);
-                    float delay = .05f;
+                    float delay = .1f;
 
                     //play sound of character for each dialogue line
                     int randNum = Random.Range(0, voiceNotes.Length);
@@ -132,7 +132,7 @@ public class DialogueSystem : MonoBehaviour
         Active = false;
 
         //fade background music back in
-        yield return StartCoroutine(soundManager.fadeAudio(2f));
+        yield return StartCoroutine(soundManager.FadeMusicAudio(2f));
     }
 
 }
@@ -141,5 +141,5 @@ public struct Dialogue
 {
     public string speaker;
     public string dialogueText;
-    public AudioClip voice;
+    //public AudioClip voice;
 }

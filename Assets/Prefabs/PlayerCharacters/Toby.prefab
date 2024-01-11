@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: e10381865143b2148ab082bfc452c755, type: 2}
+    - target: {fileID: 281762732603092616, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
+      propertyPath: playerSortOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 281762732603092617, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
       propertyPath: m_RootOrder
       value: 0

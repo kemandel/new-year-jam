@@ -16000,10 +16000,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.25
+    y: 0.2037037
+    width: 0.5
+    height: 0.5925926
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -16355,7 +16355,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -16560,7 +16560,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 415dd240f1352be4caece99fef31dbb5, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
@@ -17133,13 +17133,10 @@ MonoBehaviour:
   dialogue:
   - speaker: Cube
     dialogueText: I am testing writing way tooooooo much on a single line
-    voice: {fileID: 8300000, guid: 6986d35a4a2ee034eb2634e958d06914, type: 3}
   - speaker: Cube
     dialogueText: Testing multiple lines from same speaker
-    voice: {fileID: 8300000, guid: 6986d35a4a2ee034eb2634e958d06914, type: 3}
   - speaker: 
     dialogueText: Okay Dude. Chill.
-    voice: {fileID: 8300000, guid: 6986d35a4a2ee034eb2634e958d06914, type: 3}
 --- !u!61 &1180683616
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20391,6 +20388,36 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: -24, y: -29, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 25
+      m_TileSpriteIndex: 25
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 13
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -23, y: -29, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 25
+      m_TileSpriteIndex: 25
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 13
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -22, y: -29, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 25
+      m_TileSpriteIndex: 25
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 13
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -21, y: -29, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 25
@@ -43162,7 +43189,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 5f9aa88cb5ff318468a631ae59e08ff1, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 08f6754aa19372d43a71fd9a9e2a9255, type: 2}
-  - m_RefCount: 2430
+  - m_RefCount: 2433
     m_Data: {fileID: 11400000, guid: 181981ac85746ff4a9274eb571f470ec, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -43215,10 +43242,10 @@ Tilemap:
     m_Data: {fileID: 824287899, guid: 10eb9d50678a3bb4cb797217d5829f58, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1176841939, guid: 8ebd7cf5164e5084494b152291fcb18a, type: 3}
-  - m_RefCount: 2430
+  - m_RefCount: 2433
     m_Data: {fileID: 954374623, guid: 8ebd7cf5164e5084494b152291fcb18a, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 2554
+  - m_RefCount: 2557
     m_Data:
       e00: 1
       e01: 0
@@ -43263,7 +43290,7 @@ Tilemap:
     m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
   - m_RefCount: 0
     m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
-  - m_RefCount: 2554
+  - m_RefCount: 2557
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1

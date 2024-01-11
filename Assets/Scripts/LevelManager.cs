@@ -24,11 +24,36 @@ public class LevelManager : MonoBehaviour
     {
         players[players.Count-1].trailingPlayer = player;
         players.Add(player);
+        SortPlayers();
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void SwapPlayer(int playerPosition)
     {
-        
+        if (playerPosition < players.Count)
+        {
+            activePlayer = players[playerPosition];
+            SortPlayers();
+        }
+    }
+
+    private static void SortPlayers()
+    {
+        List<PlayerController> newPlayerList = new List<PlayerController>();
+        newPlayerList.Add(activePlayer);
+        players.Remove(activePlayer);
+        while (players.Count > 0)
+        {
+            int nextPlayerIndex = 0;
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (players[i].playerSortOrder < players[nextPlayerIndex].playerSortOrder)
+                {
+                    nextPlayerIndex = i;
+                }
+            }
+            newPlayerList.Add(players[nextPlayerIndex]);
+            players.RemoveAt(nextPlayerIndex);
+        }
+        players = newPlayerList;
     }
 }

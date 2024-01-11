@@ -5,13 +5,14 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     private AudioSource[] audioSources;
+    [HideInInspector]
     public AudioSource dialogueSource;
     private AudioSource musicSource;
     private AudioSource soundEffectSource;
-    private const float defaultVolume = 0.8f;
+    private const float DEFAULT_VOLUME = 0.8f;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         audioSources = FindObjectsOfType<AudioSource>();
         dialogueSource = audioSources[0];
@@ -20,7 +21,7 @@ public class SoundManager : MonoBehaviour
     }
 
     /*Fade in or out the background music to a targeted volume and duration*/
-    public IEnumerator fadeAudio( float duration, float targetVol = defaultVolume)
+    public IEnumerator FadeMusicAudio( float duration, float targetVol = DEFAULT_VOLUME)
     {
         //fade in or out the current music
         float currTime = 0f;

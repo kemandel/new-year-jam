@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: trailingPlayer
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 281762732603092616, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
+      propertyPath: playerSortOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 281762732603092617, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
       propertyPath: m_RootOrder
       value: 0
