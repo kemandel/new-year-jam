@@ -11,16 +11,27 @@ public class DialogueSystem : MonoBehaviour
     /// <summary>
     /// The amount of characters that can fit on each line of the dialogue box
     /// </summary>
-    private int characterLineLimit = 40; //18
+    private int characterLineLimit = 32; //18
 
-    public AudioSource voiceSource;
+    private AudioSource voiceSource;
     //UI for dialogue
     private static Canvas dialogueUI;
 
+    private SoundManager soundManager;
     //dialogue active status
     public static bool Active { get; private set; }
 
     bool pause = false;
+
+    private AudioClip[] voiceNotes;
+
+    private void Start()
+    {
+        //set the audio source we want to play from
+        soundManager = FindObjectOfType<SoundManager>();
+        voiceSource = soundManager.dialogueSource;
+        voiceNotes = Resources.LoadAll<AudioClip>("DialogueNotes");
+    }
     private void Awake()
     {
         dialogueUI = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<Canvas>();
@@ -44,6 +55,9 @@ public class DialogueSystem : MonoBehaviour
 
     private IEnumerator DialogueCoroutine(Dialogue[] dialogue)
     {
+        //fade background music out
+         StartCoroutine(soundManager.fadeAudio(2f, 0.3f));
+
         Active = true;
         Dialogue currentDialogue;
 
@@ -90,7 +104,10 @@ public class DialogueSystem : MonoBehaviour
                 {
                     currentText.text = activeDialogue + dialogueWords[j].Substring(0, k + 1);
                     float delay = .05f;
+
                     //play sound of character for each dialogue line
+                    int randNum = Random.Range(0, voiceNotes.Length);
+                    voiceSource.clip = voiceNotes[randNum];
                     voiceSource.Play(); //need to figure out if this is looping or what, if so stop it
 
                     yield return new WaitForSeconds(delay);
@@ -109,9 +126,13 @@ public class DialogueSystem : MonoBehaviour
                 yield return null;
             }
         }
+
         dialogueUI.enabled = false;
         voiceSource.Stop();
         Active = false;
+
+        //fade background music back in
+        yield return StartCoroutine(soundManager.fadeAudio(2f));
     }
 
 }
