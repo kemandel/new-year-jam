@@ -48,6 +48,17 @@ public class C_Grid : MonoBehaviour
         }
     }
 
+    public void RefreshGridWalkable()
+    {
+        for (int x = 0; x < gridSizeX; x++)
+        {
+            for (int y = 0; y < gridSizeY; y++)
+            {
+                grid[x,y].walkable = walkableMap.HasTile(walkableMap.WorldToCell(grid[x,y].worldPosition));
+            }
+        }
+    }
+
     public List<Node> GetNeighbors(Node node)
     {
         List<Node> neighbors = new List<Node>();
