@@ -89,7 +89,7 @@ public class DialogueSystem : MonoBehaviour
                 for (int k = 0; k < dialogueWords[j].Length; k++)
                 {
                     currentText.text = activeDialogue + dialogueWords[j].Substring(0, k + 1);
-                    float delay = ((int)1/ 10f);
+                    float delay = .05f;
                     //play sound of character for each dialogue line
                     voiceSource.Play(); //need to figure out if this is looping or what, if so stop it
 
