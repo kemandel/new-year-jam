@@ -18,6 +18,7 @@ public class DialogueTrigger : MonoBehaviour
         {
             dialogueSystem.PlayDialogue(dialogue);
         }
+        gameObject.SetActive(false);
     }
 
 }

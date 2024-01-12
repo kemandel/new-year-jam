@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.AI;
 
+public delegate void PlayerEvent(string characterName);
+
 public class LevelManager : MonoBehaviour
 {
+    public static event PlayerEvent AddPlayerEvent;
     public GameSettings defaultSettings;
     public static GameSettings Settings {get; private set;}
     public static PlayerController activePlayer {get; private set;}
     public static List<PlayerController> players {get; set;}
     public PlayerController startingPlayer;
-
+    private UIManager swapUIManager;
     // Start is called before the first frame update
     void Awake()
     {
@@ -19,6 +22,7 @@ public class LevelManager : MonoBehaviour
 
         activePlayer = startingPlayer;
         players.Add(activePlayer);
+        swapUIManager = FindObjectOfType<UIManager>();
     }
 
     void LateUpdate()
@@ -31,6 +35,9 @@ public class LevelManager : MonoBehaviour
         players[players.Count-1].TrailingPlayer = player;
         players.Add(player);
         SortPlayers();
+        AddPlayerEvent?.Invoke(player.characterName);
+
+        //need to call swapUIManager.SetPlayer() but i cant bc it is static 
     }
 
     public static bool CheckForCharacter(string characterName)
