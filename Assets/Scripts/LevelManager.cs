@@ -33,19 +33,23 @@ public class LevelManager : MonoBehaviour
         SortPlayers();
     }
 
+    public static bool CheckForCharacter(string characterName)
+    {
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i].characterName == characterName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void SwapPlayer(int playerPosition)
     {
         if (playerPosition < players.Count)
         {
             Debug.Log("Swapping to " + players[playerPosition].name);
-
-            /*
-            // Swap current and new player positions
-            (activePlayer.transform.position, players[playerPosition].transform.position) = (players[playerPosition].transform.position, activePlayer.transform.position);
-
-            // Swap current and new player nodes
-            (activePlayer.CurrentNode, players[playerPosition].CurrentNode) = (players[playerPosition].CurrentNode, activePlayer.CurrentNode);
-            */
 
             activePlayer = players[playerPosition];
             SortPlayers();

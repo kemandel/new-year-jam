@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public string characterName;
+
     public PlayerController TrailingPlayer {get; set;}
 
     public Node CurrentNode {get; set;}

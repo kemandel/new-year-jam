@@ -16,6 +16,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: c52184a171752ff4aa7c2e18689db7bb, type: 2}
     - target: {fileID: 281762732603092616, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
+      propertyPath: characterName
+      value: Teddy
+      objectReference: {fileID: 0}
+    - target: {fileID: 281762732603092616, guid: c7e0071f6d91c6c44873d2268ef533ac, type: 3}
       propertyPath: trailingPlayer
       value: 
       objectReference: {fileID: 0}
