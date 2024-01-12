@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,9 +21,14 @@ public class LevelManager : MonoBehaviour
         players.Add(activePlayer);
     }
 
+    void LateUpdate()
+    {
+        PlayerController.playerInputRecorded = false;
+    }
+
     public static void AddPlayer(PlayerController player)
     {
-        players[players.Count-1].trailingPlayer = player;
+        players[players.Count-1].TrailingPlayer = player;
         players.Add(player);
         SortPlayers();
     }
@@ -31,6 +37,16 @@ public class LevelManager : MonoBehaviour
     {
         if (playerPosition < players.Count)
         {
+            Debug.Log("Swapping to " + players[playerPosition].name);
+
+            /*
+            // Swap current and new player positions
+            (activePlayer.transform.position, players[playerPosition].transform.position) = (players[playerPosition].transform.position, activePlayer.transform.position);
+
+            // Swap current and new player nodes
+            (activePlayer.CurrentNode, players[playerPosition].CurrentNode) = (players[playerPosition].CurrentNode, activePlayer.CurrentNode);
+            */
+
             activePlayer = players[playerPosition];
             SortPlayers();
         }
@@ -39,6 +55,12 @@ public class LevelManager : MonoBehaviour
     private static void SortPlayers()
     {
         List<PlayerController> newPlayerList = new List<PlayerController>();
+        Vector3[] oldPositions = new Vector3[players.Count];
+        for (int i = 0; i < players.Count; i++)
+        {
+            oldPositions[i] = players[i].transform.position;
+        }
+
         newPlayerList.Add(activePlayer);
         players.Remove(activePlayer);
         while (players.Count > 0)
@@ -51,9 +73,36 @@ public class LevelManager : MonoBehaviour
                     nextPlayerIndex = i;
                 }
             }
+
+
             newPlayerList.Add(players[nextPlayerIndex]);
             players.RemoveAt(nextPlayerIndex);
+            newPlayerList[^2].TrailingPlayer = newPlayerList[^1];
         }
+        newPlayerList[^1].TrailingPlayer = null;
         players = newPlayerList;
+
+        // Swap player positions
+        for (int i = 0; i < newPlayerList.Count; i++)
+        {
+            players[i].transform.position = oldPositions[i];
+            players[i].CurrentNode = FindObjectOfType<C_Grid>().NodeFromWorldPoint(oldPositions[i]);
+        }
+
+        // Point active player forward
+        if (players[0].TrailingPlayer != null)
+            players[0].Rotate(new Vector2Int(Mathf.RoundToInt(players[0].transform.position.x - players[0].TrailingPlayer.transform.position.x), Mathf.RoundToInt(players[0].transform.position.y - players[0].TrailingPlayer.transform.position.y)));
+
+        // Point non-active players forward
+        for (int i = 0; i < players.Count - 1; i++)
+        {
+            players[i].TrailingPlayer.Rotate(new Vector2Int(Mathf.RoundToInt(players[i].transform.position.x - players[i].TrailingPlayer.transform.position.x), Mathf.RoundToInt(players[i].transform.position.y - players[i].TrailingPlayer.transform.position.y)));
+        }
+
+        foreach(PlayerController p in players)
+        {
+            p.InputEnabled = false;
+        }
+        players[0].InputEnabled = true;
     }
 }

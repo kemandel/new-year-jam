@@ -6,23 +6,29 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public PlayerController trailingPlayer;
+    public PlayerController TrailingPlayer {get; set;}
 
     public Node CurrentNode {get; set;}
     public bool InputEnabled {get; set;} = true;
     public int playerSortOrder;
+
+    public static bool playerInputRecorded = false;
 
     private bool moving;
     private Animator animator;
     private C_Grid grid;
     private Node interactNode;
 
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+        moving = false;
+    }
+
     public void Start()
     {
         grid = FindObjectOfType<C_Grid>();
         CurrentNode = grid.NodeFromWorldPoint(transform.position);
-        moving = false;
-        animator = GetComponentInChildren<Animator>();
         interactNode = grid.grid[CurrentNode.gridX,CurrentNode.gridY-1];
     }
     
@@ -31,10 +37,10 @@ public class PlayerController : MonoBehaviour
         // Dont check for inputs if moving or not in control
         if (moving)
         {
-            if (trailingPlayer != null)
+            if (TrailingPlayer != null)
             {
-                int sortingOrder = trailingPlayer.transform.position.y > transform.position.y ? GetComponentInChildren<SpriteRenderer>().sortingOrder - 1 : GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
-                trailingPlayer.GetComponentInChildren<SpriteRenderer>().sortingOrder = sortingOrder;
+                int sortingOrder = TrailingPlayer.transform.position.y > transform.position.y ? GetComponentInChildren<SpriteRenderer>().sortingOrder - 1 : GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
+                TrailingPlayer.GetComponentInChildren<SpriteRenderer>().sortingOrder = sortingOrder;
             }
             return;
         }
@@ -44,10 +50,12 @@ public class PlayerController : MonoBehaviour
             animator.SetInteger("YVel", 0);
         }
         
-        if (LevelManager.activePlayer != this) return;
+        if (LevelManager.activePlayer != this || playerInputRecorded) return;
         if (MinigameController.Active) return;
         if (DialogueSystem.Active) return;
         if (!InputEnabled) return;
+
+        playerInputRecorded = true;
 
         // Check for player swap
         for (int i = 0; i < LevelManager.Settings.characterSwapKeys.Length; i++)
@@ -103,6 +111,11 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(MoveCoroutine(node));
     }
 
+    public void Rotate(Vector2Int direction)
+    {
+        StartCoroutine(RotateCoroutine(direction));
+    }
+
     private IEnumerator RotateCoroutine(Vector2Int direction)
     {
         moving = true;
@@ -120,9 +133,9 @@ public class PlayerController : MonoBehaviour
         Node oldNode = CurrentNode;
         CurrentNode = newNode;
 
-        if (trailingPlayer != null)
+        if (TrailingPlayer != null)
         {
-            trailingPlayer.MoveToNode(oldNode);
+            TrailingPlayer.MoveToNode(oldNode);
         }
 
         animator.SetInteger("XVel", Mathf.RoundToInt(newNode.worldPosition.x - oldNode.worldPosition.x));

@@ -103,7 +103,7 @@ public class DialogueSystem : MonoBehaviour
                 for (int k = 0; k < dialogueWords[j].Length; k++)
                 {
                     currentText.text = activeDialogue + dialogueWords[j].Substring(0, k + 1);
-                    float delay = .1f;
+                    float delay = .05f;
 
                     //play sound of character for each dialogue line
                     int randNum = Random.Range(0, voiceNotes.Length);
