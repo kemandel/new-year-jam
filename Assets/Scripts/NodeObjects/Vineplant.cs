@@ -38,11 +38,11 @@ public class Vineplant : NodeObject, IInteractable
     {
         if (retractable)
         {
-            if (Vector2.Distance(transform.position, LevelManager.activePlayer.transform.position) > FindObjectOfType<C_Grid>().nodeRadius * 2 * LevelManager.players.Count && transform.position.y > LevelManager.activePlayer.transform.position.y)
+            if (Vector2.Distance(transform.position, LevelManager.activePlayer.transform.position) >= FindObjectOfType<C_Grid>().nodeRadius * 2 * LevelManager.players.Count && transform.position.y >= LevelManager.activePlayer.transform.position.y)
             {
                 Retract();
             }
-            else if (Vector2.Distance(transform.position, LevelManager.activePlayer.transform.position) > FindObjectOfType<C_Grid>().nodeRadius * 2 * (vineLength + 2) && transform.position.y < LevelManager.activePlayer.transform.position.y)
+            else if (Vector2.Distance(transform.position, LevelManager.activePlayer.transform.position) >= FindObjectOfType<C_Grid>().nodeRadius * 2 * (vineLength + 2) && transform.position.y < LevelManager.activePlayer.transform.position.y)
             {
                 retractable = false;
             }

@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 8
   m_Sprite: {fileID: -491150280, guid: d832aaf77e3794648aa71c3c8c496c32, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -112,8 +112,6 @@ MonoBehaviour:
   - speaker: 
     dialogueText: Fae might be able to talk to this flower!
   growDialogue:
-  - speaker: 
-    dialogueText: 
   - speaker: Fae
     dialogueText: Can you grow for me little one?
   startGrown: 0

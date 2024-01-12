@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     private bool moving;
     private Animator animator;
     private C_Grid grid;
-    private Node interactNode;
+    
+    private static Node interactNode;
 
     private void Awake()
     {
@@ -31,7 +32,8 @@ public class PlayerController : MonoBehaviour
     {
         grid = FindObjectOfType<C_Grid>();
         CurrentNode = grid.NodeFromWorldPoint(transform.position);
-        interactNode = grid.grid[CurrentNode.gridX,CurrentNode.gridY-1];
+        if (LevelManager.activePlayer == this)
+            interactNode = grid.grid[CurrentNode.gridX,CurrentNode.gridY-1];
     }
     
     public void Update()
