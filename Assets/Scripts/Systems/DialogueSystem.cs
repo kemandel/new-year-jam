@@ -25,6 +25,8 @@ public class DialogueSystem : MonoBehaviour
 
     private AudioClip[] voiceNotes;
 
+    private Canvas swapSpriteUI;
+
     private void Start()
     {
         //set the audio source we want to play from
@@ -35,6 +37,8 @@ public class DialogueSystem : MonoBehaviour
     private void Awake()
     {
         dialogueUI = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<Canvas>();
+        swapSpriteUI = GameObject.FindGameObjectWithTag("SwapCanvas").GetComponent<Canvas>();
+
         dialogueUI.enabled = false;
     }
 
@@ -58,6 +62,9 @@ public class DialogueSystem : MonoBehaviour
         //fade background music out
          StartCoroutine(soundManager.FadeMusicAudio(2f, 0.3f));
 
+        //turn off swapping character UI
+        swapSpriteUI.gameObject.SetActive(false);
+
         Active = true;
         Dialogue currentDialogue;
 
@@ -72,15 +79,16 @@ public class DialogueSystem : MonoBehaviour
             //voiceSource.clip = currentDialogue.voice;
 
             //if new speaker, add name at the top
-            if (previousSpeaker != currentDialogue.speaker)
-            {
+           // if (previousSpeaker != currentDialogue.speaker)
+            //{
                 //if playing as Sam, should be in 2nd person so no name printed
                 currentText.text = currentDialogue.speaker == "" ? "" : currentDialogue.speaker + ':' + '\n';
-            }
+            //}
+            /*
             else
             {
                 currentText.text = "";
-            }
+            }*/
             //dialogue before adding current dialogue
             //string startingDialogue = currentText.text;
 
@@ -130,6 +138,9 @@ public class DialogueSystem : MonoBehaviour
         dialogueUI.enabled = false;
         voiceSource.Stop();
         Active = false;
+
+        //turn on swapping character UI
+        swapSpriteUI.gameObject.SetActive(true);
 
         //fade background music back in
         yield return StartCoroutine(soundManager.FadeMusicAudio(2f));
