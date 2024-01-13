@@ -6,6 +6,8 @@ public class DialogueTrigger : MonoBehaviour
 {
     private DialogueSystem dialogueSystem;
     public Dialogue[] dialogue;
+    public string[] necessaryCharacters;
+    private bool conditionsMet;
 
     private void Start()
     {
@@ -14,11 +16,20 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        conditionsMet = true;
+        foreach (string charName in necessaryCharacters)
+        {
+            if (!LevelManager.CheckForCharacter(charName))
+            {
+                //char not added yet
+                conditionsMet = false;
+            }
+        }
+        if (collision.gameObject.CompareTag("Player") && conditionsMet)
         {
             dialogueSystem.PlayDialogue(dialogue);
+            gameObject.SetActive(false);
         }
-        gameObject.SetActive(false);
     }
 
 }

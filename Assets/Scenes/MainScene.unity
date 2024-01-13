@@ -151,6 +151,18 @@ PrefabInstance:
       value: Mabel
       objectReference: {fileID: 0}
     - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[0]
+      value: Fae
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[1]
+      value: Mabel
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: dialogue.Array.data[0].dialogueText
       value: The group stops in front of a small, well-maintained statue.
       objectReference: {fileID: 0}
@@ -11871,6 +11883,26 @@ PrefabInstance:
     - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: dialogue.Array.data[9].speaker
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[0]
+      value: Teddy
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[1]
+      value: Mabel
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[2]
+      value: Fae
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[3]
+      value: Toby
       objectReference: {fileID: 0}
     - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: dialogue.Array.data[0].dialogueText
@@ -43336,10 +43368,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.25
-    y: 0.2037037
-    width: 0.5
-    height: 0.5925926
+    x: 0
+    y: -0.033333335
+    width: 1
+    height: 1.0666667
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -43805,7 +43837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593186956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.456, y: -7.855, z: 0}
+  m_LocalPosition: {x: 4.264, y: -7.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46928,6 +46960,22 @@ PrefabInstance:
       value: Teddy
       objectReference: {fileID: 0}
     - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[0]
+      value: Teddy
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[1]
+      value: Mabel
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[2]
+      value: Fae
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: dialogue.Array.data[0].dialogueText
       value: Your group approaches some mushrooms. Teddy points them out.
       objectReference: {fileID: 0}
@@ -47375,6 +47423,14 @@ PrefabInstance:
       value: Fae
       objectReference: {fileID: 0}
     - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[0]
+      value: Fae
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: dialogue.Array.data[0].dialogueText
       value: You come across a dying flower, and Fae exclaims in sympathy
       objectReference: {fileID: 0}
@@ -47405,11 +47461,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2209131940269877672, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.60407
+      value: 18.9
       objectReference: {fileID: 0}
     - target: {fileID: 2209131940269877672, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -23.422712
+      value: 17.5
       objectReference: {fileID: 0}
     - target: {fileID: 2209131940269877672, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -47586,6 +47642,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: dialogue.Array.data[10].speaker
       value: Mabel
       objectReference: {fileID: 0}
@@ -47596,6 +47656,14 @@ PrefabInstance:
     - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: dialogue.Array.data[12].speaker
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[0]
+      value: Fae
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[1]
+      value: Mabel
       objectReference: {fileID: 0}
     - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: dialogue.Array.data[0].dialogueText
@@ -47758,8 +47826,24 @@ PrefabInstance:
       value: Mabel
       objectReference: {fileID: 0}
     - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: dialogue.Array.data[10].speaker
       value: Mabel
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: dialogue.Array.data[11].speaker
+      value: Mabel
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[0]
+      value: Mabel
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[1]
+      value: Teddy
       objectReference: {fileID: 0}
     - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: dialogue.Array.data[0].dialogueText
@@ -47807,6 +47891,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: dialogue.Array.data[10].dialogueText
+      value: Your group moves on, Teddy and Mabel discussing the finer details of
+        architecture.
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: dialogue.Array.data[11].dialogueText
       value: Your group moves on, Teddy and Mabel discussing the finer details of
         architecture.
       objectReference: {fileID: 0}
@@ -74576,11 +74665,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2209131940269877672, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.60407
+      value: 16.9
       objectReference: {fileID: 0}
     - target: {fileID: 2209131940269877672, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -23.422712
+      value: 14.2
       objectReference: {fileID: 0}
     - target: {fileID: 2209131940269877672, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -77523,6 +77612,14 @@ PrefabInstance:
     - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: dialogue.Array.data[1].speaker
       value: Fae
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
+      propertyPath: necessaryCharacters.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 766950651062524163, guid: d704c19dcc1fe434b8f2a43ff59d01bb, type: 3}
       propertyPath: dialogue.Array.data[0].dialogueText
