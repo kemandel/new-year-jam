@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 415e2582f039bea49918faac58fd4063
+guid: 878bbc0f554bb34459b68a67cf72e730
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TreeTiles_0
+      name: CliffTileset_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c539fc2a657b09d46a79da64ff2ad144
-      internalID: 1835291643
+      spriteID: f9e6db9b50dc6ff49a1cd867da7d6894
+      internalID: 958983910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TreeTiles_1
+      name: CliffTileset_1
       rect:
         serializedVersion: 2
         x: 32
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19b55b1e7e750a340a3cdec8637d942d
-      internalID: -147198436
+      spriteID: 37d122d3886c2ad4ca28d4db82288d8d
+      internalID: 483567323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TreeTiles_2
+      name: CliffTileset_2
       rect:
         serializedVersion: 2
         x: 64
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a61b8b0ee69f6e745b77970d0a91bf28
-      internalID: -1707867851
+      spriteID: e5a6c101001c4674891e5feeebce89e1
+      internalID: 1890744352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TreeTiles_3
+      name: CliffTileset_3
       rect:
         serializedVersion: 2
         x: 0
@@ -193,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 286b15d8ad7fcf544baa577661c378ef
-      internalID: 1683350386
+      spriteID: ddfce08f5ef02524fb0406de64363d67
+      internalID: -1292453327
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TreeTiles_4
+      name: CliffTileset_4
       rect:
         serializedVersion: 2
         x: 32
@@ -214,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9015f140dd01224791c0f5e6d32b6c3
-      internalID: -927294618
+      spriteID: de65e4353fa48b741838c463715f3d50
+      internalID: 2048950656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TreeTiles_5
+      name: CliffTileset_5
       rect:
         serializedVersion: 2
         x: 64
@@ -235,14 +235,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1ed44a0dd0265e4ba208e4b58122694
-      internalID: -569920165
+      spriteID: 9652c3ee9f299d7499504404f15b982b
+      internalID: 1528915710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TreeTiles_6
+      name: CliffTileset_6
       rect:
         serializedVersion: 2
         x: 0
@@ -256,14 +256,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 053208516f44602408929b4df349f0ae
-      internalID: 1470656873
+      spriteID: 70b982ac42e457543aa9caf829f5e487
+      internalID: 1091334402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TreeTiles_7
+      name: CliffTileset_7
       rect:
         serializedVersion: 2
         x: 32
@@ -277,14 +277,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24ac8806b2f56ce4a99b54ff90245c04
-      internalID: 2042489842
+      spriteID: a838ad3b4ab71c845bda91a561922763
+      internalID: 1451779209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TreeTiles_8
+      name: CliffTileset_8
       rect:
         serializedVersion: 2
         x: 64
@@ -298,8 +298,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac9ce246bf209e24ebfb067d92c99e59
-      internalID: 908849718
+      spriteID: 607bcb460c91b12439245328bf39e547
+      internalID: 605800730
       vertices: []
       indices: 
       edges: []
@@ -315,15 +315,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TreeTiles_2: -1707867851
-      TreeTiles_1: -147198436
-      TreeTiles_7: 2042489842
-      TreeTiles_0: 1835291643
-      TreeTiles_3: 1683350386
-      TreeTiles_4: -927294618
-      TreeTiles_8: 908849718
-      TreeTiles_5: -569920165
-      TreeTiles_6: 1470656873
+      CliffTileset_7: 1451779209
+      CliffTileset_1: 483567323
+      CliffTileset_6: 1091334402
+      CliffTileset_3: -1292453327
+      CliffTileset_5: 1528915710
+      CliffTileset_0: 958983910
+      CliffTileset_4: 2048950656
+      CliffTileset_8: 605800730
+      CliffTileset_2: 1890744352
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
