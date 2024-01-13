@@ -17,7 +17,8 @@ public class UpdateDialogue : MonoBehaviour
         if (LevelManager.CheckForCharacter("Mabel") && !updatedDialogue)
         {
             Debug.Log("Mabel has been found");
-            gameObject.GetComponent<NPC>().beforeDialogue = mabelDialogue;
+            if (gameObject.GetComponent<NPC>() != null)
+                gameObject.GetComponent<NPC>().beforeDialogue = mabelDialogue;
             updatedDialogue = true;
         }
     }
