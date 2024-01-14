@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(LevelManager.Settings.characterSwapKeys[i]))
             {
-                LevelManager.SwapPlayer(i);
+                StartCoroutine(FindObjectOfType<LevelManager>().SwapPlayerCoroutine(i));
                 return;
             }
         }

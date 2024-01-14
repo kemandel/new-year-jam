@@ -9,15 +9,16 @@ public class UpdateDialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LevelManager.AddPlayerEvent += UpdateCharacterDialogue;
+        LevelManager.SortPlayerEvent += UpdateCharacterDialogue;
     }
 
-    void UpdateCharacterDialogue(string characterName)
+    void UpdateCharacterDialogue()
     {
         if (LevelManager.CheckForCharacter("Mabel") && !updatedDialogue)
         {
             Debug.Log("Mabel has been found");
-            gameObject.GetComponent<NPC>().beforeDialogue = mabelDialogue;
+            if (gameObject.GetComponent<NPC>() != null)
+                gameObject.GetComponent<NPC>().beforeDialogue = mabelDialogue;
             updatedDialogue = true;
         }
     }

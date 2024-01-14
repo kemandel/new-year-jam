@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Experimental.AI;
+using Unity.VisualScripting;
 
-public delegate void PlayerEvent(string characterName);
+public delegate void PlayerEvent();
 
 public class LevelManager : MonoBehaviour
 {
-    public static event PlayerEvent AddPlayerEvent;
+    public static event PlayerEvent SortPlayerEvent;
     public GameSettings defaultSettings;
+    public Canvas fadeCanvas;
+
     public static GameSettings Settings {get; private set;}
     public static PlayerController activePlayer {get; private set;}
     public static List<PlayerController> players {get; set;}
     public PlayerController startingPlayer;
+
+    public AudioClip forestMusic;
+    private UIManager swapUIManager;
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,9 +30,29 @@ public class LevelManager : MonoBehaviour
         players.Add(activePlayer);
     }
 
+    void Start()
+    {
+        FindObjectOfType<SoundManager>().PlayMusic(forestMusic, 0);
+        StartCoroutine(FindObjectOfType<SoundManager>().FadeMusicAudioCoroutine(Settings.baseAudioFadeSpeed, Settings.musicVolume));
+    }
+
     void LateUpdate()
     {
         PlayerController.playerInputRecorded = false;
+    }
+
+    public IEnumerator FadeCoroutine(bool fadeIn, float fadeDuration)
+    {
+        float startTime = Time.time;
+        float passedTime = 0;
+        while (passedTime < fadeDuration)
+        {
+            float ratio = passedTime / fadeDuration;
+            fadeCanvas.GetComponentInChildren<Image>().color = new Color(0,0,0, fadeIn ? Mathf.Lerp(1,0,ratio) : Mathf.Lerp(0,1,ratio));
+            yield return null;
+            passedTime = Time.time - startTime;
+        }
+        fadeCanvas.GetComponentInChildren<Image>().color = new Color(0,0,0, fadeIn ? 0 : 1);
     }
 
     public static void AddPlayer(PlayerController player)
@@ -33,7 +60,9 @@ public class LevelManager : MonoBehaviour
         players[players.Count-1].TrailingPlayer = player;
         players.Add(player);
         SortPlayers();
-        AddPlayerEvent?.Invoke(player.characterName); 
+        
+
+        //need to call swapUIManager.SetPlayer() but i cant bc it is static 
     }
 
     public static bool CheckForCharacter(string characterName)
@@ -48,14 +77,17 @@ public class LevelManager : MonoBehaviour
         return false;
     }
 
-    public static void SwapPlayer(int playerPosition)
+    public IEnumerator SwapPlayerCoroutine(int playerPosition)
     {
         if (playerPosition < players.Count)
         {
             Debug.Log("Swapping to " + players[playerPosition].name);
-
+            activePlayer.InputEnabled = false;
+            yield return StartCoroutine(FindObjectOfType<LevelManager>().FadeCoroutine(false, Settings.baseFadeSpeed));
             activePlayer = players[playerPosition];
             SortPlayers();
+            yield return StartCoroutine(FindObjectOfType<LevelManager>().FadeCoroutine(true, Settings.baseFadeSpeed / 2f));
+            activePlayer.InputEnabled = true;
         }
     }
 
@@ -110,6 +142,7 @@ public class LevelManager : MonoBehaviour
         {
             p.InputEnabled = false;
         }
+        SortPlayerEvent?.Invoke();
         players[0].InputEnabled = true;
     }
 }

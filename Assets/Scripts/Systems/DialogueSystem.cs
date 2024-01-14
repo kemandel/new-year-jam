@@ -60,7 +60,7 @@ public class DialogueSystem : MonoBehaviour
     private IEnumerator DialogueCoroutine(Dialogue[] dialogue)
     {
         //fade background music out
-         StartCoroutine(soundManager.FadeMusicAudio(2f, 0.3f));
+        StartCoroutine(FindObjectOfType<SoundManager>().FadeMusicAudioCoroutine(LevelManager.Settings.baseAudioFadeSpeed, LevelManager.Settings.musicVolume * .5f));
 
         //turn off swapping character UI
         swapSpriteUI.gameObject.SetActive(false);
@@ -142,8 +142,10 @@ public class DialogueSystem : MonoBehaviour
         //turn on swapping character UI
         swapSpriteUI.gameObject.SetActive(true);
 
-        //fade background music back in
-        yield return StartCoroutine(soundManager.FadeMusicAudio(2f));
+        yield return null;
+        if (!MinigameController.Active)
+            //fade background music back in
+            StartCoroutine(FindObjectOfType<SoundManager>().FadeMusicAudioCoroutine(LevelManager.Settings.baseAudioFadeSpeed, LevelManager.Settings.musicVolume));
     }
 
 }

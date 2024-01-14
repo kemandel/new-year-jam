@@ -22,14 +22,12 @@ public class UIManager : MonoBehaviour
         {
             container.gameObject.SetActive(false);
         }
-        LevelManager.AddPlayerEvent += SetPlayerUI;
+        LevelManager.SortPlayerEvent += SetPlayerUI;
         //set Sam UI on
-        SetPlayerUI("Sam");
-        quitMenu.gameObject.SetActive(false);
+        SetPlayerUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetPlayerUI()
     {
         if (!inQuit && Input.GetKeyDown(KeyCode.Escape))
         {
@@ -62,27 +60,20 @@ public class UIManager : MonoBehaviour
 
     void SetPlayerUI(string playerName)
     {
-        Sprite playerToSet = null;
-
-        for (int i =0; i < playerSprites.Length; i++)
+        for (int x = 0; x < LevelManager.players.Count; x++)
         {
-            Debug.Log("looping through player sprites comparing " + playerName + "with" + playerSprites[i].name);
-            if (playerName == playerSprites[i].name)
-            {
-                playerToSet = playerSprites[i];
-            }
-        }
+            Sprite playerToSet = null;
 
-        for (int i = 0; i < containerElems.Length; i++)
-        {
-            //find the next disabled containere in hierarchy and set to sprite and enable
-            if (!containerElems[i].gameObject.activeInHierarchy)
+            for (int i = 0; i < playerSprites.Length; i++)
             {
-                //have to get the second image because container itself has an image component
-                containerElems[i].GetComponentsInChildren<Image>()[1].sprite = playerToSet;
-                containerElems[i].gameObject.SetActive(true);
-                break;
+                if (LevelManager.players[x].characterName == playerSprites[i].name)
+                {
+                    playerToSet = playerSprites[i];
+                }
             }
+
+            containerElems[x].GetComponentsInChildren<Image>()[1].sprite = playerToSet;
+            containerElems[x].gameObject.SetActive(true);
         }
     }
 

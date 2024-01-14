@@ -20,8 +20,8 @@ public class Bridge : NodeObject, IInteractable
     public override void Start()
     {
         FindObjectOfType<C_Grid>().NodeFromWorldPoint(bridgeStart.transform.position).currentObject = gameObject;
-        FindObjectOfType<C_Grid>().NodeFromWorldPoint(bridgeEnd.transform.position).currentObject = gameObject;
         bridgeEnd.transform.localPosition = new Vector2(FindObjectOfType<C_Grid>().nodeRadius * 2 * (bridgeLength + 1), 0);
+        FindObjectOfType<C_Grid>().NodeFromWorldPoint(bridgeEnd.transform.position).currentObject = gameObject;
 
     }
 
@@ -52,8 +52,12 @@ public class Bridge : NodeObject, IInteractable
         }
 
         // Fade to black
+        yield return StartCoroutine(FindObjectOfType<LevelManager>().FadeCoroutine(false, LevelManager.Settings.baseFadeSpeed));
 
         BuildBridge();
+
+        // Fade back
+        yield return StartCoroutine(FindObjectOfType<LevelManager>().FadeCoroutine(true, LevelManager.Settings.baseFadeSpeed/2f));
 
         LevelManager.activePlayer.InputEnabled = true;
     }
