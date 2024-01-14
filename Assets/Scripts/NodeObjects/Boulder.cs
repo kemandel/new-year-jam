@@ -50,12 +50,12 @@ public class Boulder : NodeObject, IInteractable
         }
 
         // Fade to black
-        yield return StartCoroutine(FindObjectOfType<LevelManager>().FadeCoroutine(false, 1f));
+        yield return StartCoroutine(FindObjectOfType<LevelManager>().FadeCoroutine(false, LevelManager.Settings.baseFadeSpeed));
 
         DestroyBoulder();
 
         // Fade back
-        yield return StartCoroutine(FindObjectOfType<LevelManager>().FadeCoroutine(true, .5f));
+        yield return StartCoroutine(FindObjectOfType<LevelManager>().FadeCoroutine(true, LevelManager.Settings.baseFadeSpeed/2f));
 
         LevelManager.activePlayer.InputEnabled = true;
     }

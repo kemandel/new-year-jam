@@ -21,7 +21,7 @@ public class SoundManager : MonoBehaviour
     }
 
     /*Fade in or out the background music to a targeted volume and duration*/
-    public IEnumerator FadeMusicAudio( float duration, float targetVol = DEFAULT_VOLUME)
+    public IEnumerator FadeMusicAudioCoroutine( float duration, float targetVol = DEFAULT_VOLUME)
     {
         //fade in or out the current music
         float currTime = 0f;
@@ -32,7 +32,7 @@ public class SoundManager : MonoBehaviour
             musicSource.volume = Mathf.Lerp(startVol, targetVol, currTime/duration);
             yield return null;
         }
-        yield break;
+        musicSource.volume = targetVol;
     }
 
     /*Pass audio clip to be played as background music*/

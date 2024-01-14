@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385e6ddce52b27c41ae3270b876817e8, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
+  musicVolume: 0.15
   charMoveTime: 0.3
+  baseFadeSpeed: 1
+  baseAudioFadeSpeed: 2
+  interactKey: 32
+  characterSwapKeys: 3100000032000000330000003400000035000000

@@ -12,12 +12,16 @@ public class MinigameController : MonoBehaviour
     private GameObject[,] minigameObjects;
     private GameObject playerObject;
     private Vector2Int playerPosition;
+    private TextAsset currentLevelData;
 
     private bool lockinput = false;
 
     public static bool Active { get; private set; }
 
     public Vector2 gridOffset;
+
+    public AudioClip minigameMusic;
+    public AudioClip victorySound;
 
     private void Awake()
     {
@@ -31,6 +35,12 @@ public class MinigameController : MonoBehaviour
         if (!Active) return;
 
         if (!Input.anyKeyDown || lockinput) return;
+
+        if (Input.GetKeyDown(LevelManager.Settings.interactKey))
+        {
+            RestartGame();
+            return;
+        }
         
         // Check for inputs
         Vector2Int direction = new Vector2Int(Mathf.RoundToInt(Input.GetAxisRaw("Horizontal")), Mathf.RoundToInt((int)Input.GetAxisRaw("Vertical")));
@@ -98,7 +108,46 @@ public class MinigameController : MonoBehaviour
         transform.position = LevelManager.activePlayer.transform.position;
         GetComponent<SpriteRenderer>().enabled = true;
 
+        FindObjectOfType<SoundManager>().PlayMusic(minigameMusic, LevelManager.Settings.musicVolume * .5f);
+
         string levelText = levelData.text;
+        string[] lines = levelText.Split('\n');
+        for (int i = 0; i < lines.Length; i++)
+        {
+            for (int j = 0; j < lines[i].Length; j++)
+            {
+                if (lines[i][j] == '*')
+                {
+                    minigameObjects[j, i] = CreateObject(new Vector2Int(j, i), WALL_ID);
+                }
+                else if (lines[i][j] == 'G')
+                {
+                    minigameObjects[j, i] = CreateObject(new Vector2Int(j, i), GOAL_ID);
+                }
+                else if (lines[i][j] == 'M')
+                {
+                    minigameObjects[j, i] = CreateObject(new Vector2Int(j, i), MOVEABLE_ID);
+                }
+                else if (lines[i][j] == 'P')
+                {
+                    minigameObjects[j, i] = CreateObject(new Vector2Int(j, i), PLAYER_ID);
+                    playerObject = minigameObjects[j, i];
+                    playerPosition = new Vector2Int(j, i);
+                }
+            }
+        }
+
+        currentLevelData = levelData;
+    }
+
+    private void RestartGame()
+    {
+        foreach (GameObject g in minigameObjects)
+        {
+            Destroy(g);
+        }
+
+        string levelText = currentLevelData.text;
         string[] lines = levelText.Split('\n');
         for (int i = 0; i < lines.Length; i++)
         {
@@ -129,14 +178,18 @@ public class MinigameController : MonoBehaviour
     private IEnumerator EndGameCoroutine()
     {
         lockinput = true;
-        yield return new WaitForSeconds(.5f);
+        StartCoroutine(FindObjectOfType<SoundManager>().FadeMusicAudioCoroutine(0, 0));
+        FindObjectOfType<SoundManager>().PlaySoundEffect(victorySound, LevelManager.Settings.musicVolume * .5f);
+        yield return new WaitForSeconds(victorySound.length + .1f);
         Active = false;
         GetComponent<SpriteRenderer>().enabled = false;
         foreach (GameObject g in minigameObjects)
         {
             Destroy(g);
         }
+        currentLevelData = null;
         lockinput = false;
+        FindObjectOfType<SoundManager>().PlayMusic(FindObjectOfType<LevelManager>().forestMusic, 0);
     }
 
     private GameObject CreateObject(Vector2Int objectlocation, string objectID)
