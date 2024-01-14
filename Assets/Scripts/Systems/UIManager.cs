@@ -8,13 +8,16 @@ public class UIManager : MonoBehaviour
     //private Canvas swapPlayerCanvas;
     public Image[] containerElems;
     private Sprite[] playerSprites;
+    bool inQuit;
+    public Canvas quitMenu;
+    private SoundManager soundManager;
+    public AudioClip SelectButtonSound;
+
     // Start is called before the first frame update
     void Start()
     {
-        //swapPlayerCanvas = GameObject.FindGameObjectWithTag("SwapCanvas").GetComponent<Canvas>();
+        soundManager = FindObjectOfType<SoundManager>();
         playerSprites = Resources.LoadAll<Sprite>("PlayerSprites");
-        //array of image elements containing 1-5 labels, always the same, just disabled at start
-        //containerElems = swapPlayerCanvas.GetComponentsInChildren<Image>();
         foreach (Image container in containerElems)
         {
             container.gameObject.SetActive(false);
@@ -25,6 +28,34 @@ public class UIManager : MonoBehaviour
     }
 
     void SetPlayerUI()
+    {
+        if (!inQuit && Input.GetKeyDown(KeyCode.Escape))
+        {
+            inQuit = true;
+            quitMenu.gameObject.SetActive(true);
+        }
+    }
+
+    public void QuitGame()
+    {
+        StartCoroutine(QuitCoroutine());
+    }
+
+    private IEnumerator QuitCoroutine()
+    {
+        soundManager.PlaySoundEffect(SelectButtonSound, LevelManager.Settings.musicVolume);
+        //fade to black anime
+        yield return StartCoroutine(FindObjectOfType<LevelManager>().FadeCoroutine(false, LevelManager.Settings.baseFadeSpeed));
+        Application.Quit();
+    }
+
+    public void CloseQuitMenu()
+    {
+        inQuit = false;
+        quitMenu.gameObject.SetActive(false);
+    }
+
+    void SetPlayerUI(string playerName)
     {
         for (int x = 0; x < LevelManager.players.Count; x++)
         {

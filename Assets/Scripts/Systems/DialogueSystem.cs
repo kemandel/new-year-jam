@@ -11,7 +11,7 @@ public class DialogueSystem : MonoBehaviour
     /// <summary>
     /// The amount of characters that can fit on each line of the dialogue box
     /// </summary>
-    private int characterLineLimit = 32; //18
+    private int characterLineLimit = 31; 
 
     private AudioSource voiceSource;
     //UI for dialogue

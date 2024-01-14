@@ -28,7 +28,6 @@ public class LevelManager : MonoBehaviour
 
         activePlayer = startingPlayer;
         players.Add(activePlayer);
-        swapUIManager = FindObjectOfType<UIManager>();
     }
 
     void Start()
