@@ -43,12 +43,9 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator QuitCoroutine()
     {
-        soundManager.PlaySoundEffect(SelectButtonSound);
+        soundManager.PlaySoundEffect(SelectButtonSound, LevelManager.Settings.musicVolume);
         //fade to black anime
-        Animator fadeAnim = quitMenu.gameObject.GetComponentInChildren<Animator>();
-        fadeAnim.SetTrigger("fadeToBlack");
-        yield return null;
-        yield return new WaitForSeconds(fadeAnim.GetCurrentAnimatorStateInfo(0).length);
+        yield return StartCoroutine(FindObjectOfType<LevelManager>().FadeCoroutine(false, LevelManager.Settings.baseFadeSpeed));
         Application.Quit();
     }
 
