@@ -144,7 +144,7 @@ MonoBehaviour:
     dialogueText: Mabel could build a bridge here!
   buildDialogue:
   - speaker: Mabel
-    dialogueText: Let me handle it and that bridge will be build in no time!
+    dialogueText: Let me handle it and that bridge will be built in no time!
 --- !u!1 &5380607082616792387
 GameObject:
   m_ObjectHideFlags: 0

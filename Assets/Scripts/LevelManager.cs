@@ -34,6 +34,7 @@ public class LevelManager : MonoBehaviour
     {
         FindObjectOfType<SoundManager>().PlayMusic(forestMusic, 0);
         StartCoroutine(FindObjectOfType<SoundManager>().FadeMusicAudioCoroutine(Settings.baseAudioFadeSpeed, Settings.musicVolume));
+        StartCoroutine(FindObjectOfType<LevelManager>().FadeCoroutine(true, Settings.baseFadeSpeed));
     }
 
     void LateUpdate()

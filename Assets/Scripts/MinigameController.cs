@@ -16,6 +16,8 @@ public class MinigameController : MonoBehaviour
 
     private bool lockinput = false;
 
+    private Canvas swapSpriteUI;
+
     public static bool Active { get; private set; }
 
     public Vector2 gridOffset;
@@ -28,6 +30,11 @@ public class MinigameController : MonoBehaviour
         Active = false;
         GetComponent<SpriteRenderer>().enabled = false;
         minigameObjects = new GameObject[11, 9];
+    }
+
+    private void Start()
+    {
+        swapSpriteUI = GameObject.FindGameObjectWithTag("SwapCanvas").GetComponent<Canvas>();
     }
 
     private void LateUpdate()
@@ -107,6 +114,7 @@ public class MinigameController : MonoBehaviour
         Active = true;
         transform.position = LevelManager.activePlayer.transform.position;
         GetComponent<SpriteRenderer>().enabled = true;
+        swapSpriteUI.gameObject.SetActive(false);
 
         FindObjectOfType<SoundManager>().PlayMusic(minigameMusic, LevelManager.Settings.musicVolume * .5f);
 
@@ -190,6 +198,7 @@ public class MinigameController : MonoBehaviour
         currentLevelData = null;
         lockinput = false;
         FindObjectOfType<SoundManager>().PlayMusic(FindObjectOfType<LevelManager>().forestMusic, 0);
+        swapSpriteUI.gameObject.SetActive(true);
     }
 
     private GameObject CreateObject(Vector2Int objectlocation, string objectID)

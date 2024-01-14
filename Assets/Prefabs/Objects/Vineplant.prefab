@@ -107,7 +107,7 @@ MonoBehaviour:
   noVineEndTile: {fileID: 11400000, guid: 4fd4e39ce088fe948842c7a9128721ce, type: 2}
   noFaeDialogue:
   - speaker: 
-    dialogueText: A strange looking flower
+    dialogueText: A strange looking flower.
   useFaeDialogue:
   - speaker: 
     dialogueText: Fae might be able to talk to this flower!

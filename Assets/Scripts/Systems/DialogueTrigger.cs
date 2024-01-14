@@ -8,6 +8,9 @@ public class DialogueTrigger : MonoBehaviour
     public Dialogue[] dialogue;
     public string[] necessaryCharacters;
     private bool conditionsMet;
+    private bool canActivate = true;
+
+    public bool endGame = false;
 
     private void Start()
     {
@@ -25,11 +28,25 @@ public class DialogueTrigger : MonoBehaviour
                 conditionsMet = false;
             }
         }
-        if (collision.gameObject.CompareTag("Player") && conditionsMet)
+        if (collision.gameObject.CompareTag("Player") && conditionsMet && canActivate)
         {
-            dialogueSystem.PlayDialogue(dialogue);
-            gameObject.SetActive(false);
+            StartCoroutine(DialogueCoroutine());
         }
+    }
+
+    private IEnumerator DialogueCoroutine()
+    {
+        canActivate = false;
+        dialogueSystem.PlayDialogue(dialogue);
+        while (DialogueSystem.Active)
+        {
+            yield return null;
+        }
+        if (endGame)
+        {
+            GameObject.Find("GameCompleteCanvas").GetComponent<Canvas>().enabled = true;
+        }
+        gameObject.SetActive(false);
     }
 
 }

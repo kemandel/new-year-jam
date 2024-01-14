@@ -54,7 +54,7 @@ MonoBehaviour:
     dialogueText: A large boulder stands in your way. Maybe Teddy can help?
   destroyDialogue:
   - speaker: Teddy
-    dialogueText: Stand back! I'll take care of this.
+    dialogueText: Stand back children, I'll take care of this.
 --- !u!1 &6332480430693051158
 GameObject:
   m_ObjectHideFlags: 0

@@ -67,7 +67,8 @@ public class Bridge : NodeObject, IInteractable
         Tilemap tilemap = FindObjectOfType<C_Grid>().walkableMap;
         bridgeStart.GetComponent<SpriteRenderer>().sprite = startBuiltSprite;
         bridgeEnd.GetComponent<SpriteRenderer>().sprite = endBuiltSprite;
-        FindObjectOfType<C_Grid>().NodeFromWorldPoint(transform.position).currentObject = null;
+        FindObjectOfType<C_Grid>().NodeFromWorldPoint(bridgeStart.transform.position).currentObject = null;
+        FindObjectOfType<C_Grid>().NodeFromWorldPoint(bridgeEnd.transform.position).currentObject = null;
         for (int i = 0; i < bridgeLength; i++)
         {
             tilemap.SetTile(tilemap.WorldToCell(transform.position) + new Vector3Int(i + 1, 0, 0), bridgeTile);
