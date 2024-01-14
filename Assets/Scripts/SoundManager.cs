@@ -43,7 +43,7 @@ public class SoundManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void PlaySoundEffect(AudioClip clip, float volume, bool loop = false)
+    public void PlaySoundEffect(AudioClip clip, float volume = DEFAULT_VOLUME, bool loop = false)
     {
         soundEffectSource.clip = clip;
         soundEffectSource.loop = loop;

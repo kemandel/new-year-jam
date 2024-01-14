@@ -13,7 +13,6 @@ public class LevelManager : MonoBehaviour
     public static PlayerController activePlayer {get; private set;}
     public static List<PlayerController> players {get; set;}
     public PlayerController startingPlayer;
-    private UIManager swapUIManager;
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,7 +21,6 @@ public class LevelManager : MonoBehaviour
 
         activePlayer = startingPlayer;
         players.Add(activePlayer);
-        swapUIManager = FindObjectOfType<UIManager>();
     }
 
     void LateUpdate()
@@ -35,9 +33,7 @@ public class LevelManager : MonoBehaviour
         players[players.Count-1].TrailingPlayer = player;
         players.Add(player);
         SortPlayers();
-        AddPlayerEvent?.Invoke(player.characterName);
-
-        //need to call swapUIManager.SetPlayer() but i cant bc it is static 
+        AddPlayerEvent?.Invoke(player.characterName); 
     }
 
     public static bool CheckForCharacter(string characterName)

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 24f49a36034fde5458e980ee2cd4fc1c
+guid: 6ba741b3db991a54ebf00de53974f093
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,11 +104,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Reviving_Flower_32x32_0
+      name: socks_sleep_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -118,18 +118,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 230ee137884d93b419e9b717fed19d2c
-      internalID: -1448769440
+      spriteID: 7861a551261623d46976c8e6fd78b592
+      internalID: -905754104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Reviving_Flower_32x32_1
+      name: socks_sleep_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -139,8 +139,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 286741e09720b2244b649e5500493bd9
-      internalID: -247429993
+      spriteID: 25f20bf3db90a1849a0358c2e8e496fa
+      internalID: -1478799340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: socks_sleep_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 2
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51de5551f3b384543a6235c9460589fc
+      internalID: 1378746901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: socks_sleep_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 2
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8a72e0dfac0b554199fcd987751a995
+      internalID: -873710669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: socks_sleep_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 2
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdc3754da9a36184da179aa464cf2f89
+      internalID: -1192593487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: socks_sleep_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 2
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc1f285373ba94f4cb6597466a9099fc
+      internalID: -1608490894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: socks_sleep_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 2
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d61e68dcfa5df994c847ede62f473a42
+      internalID: 616447624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: socks_sleep_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 2
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e65b155ba94faa499e91b1f9f485eec
+      internalID: 1445817767
       vertices: []
       indices: 
       edges: []
@@ -156,8 +282,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Reviving_Flower_32x32_0: -1448769440
-      Reviving_Flower_32x32_1: -247429993
+      socks_sleep_1: -1478799340
+      socks_sleep_6: 616447624
+      socks_sleep_4: -1192593487
+      socks_sleep_0: -905754104
+      socks_sleep_7: 1445817767
+      socks_sleep_5: -1608490894
+      socks_sleep_2: 1378746901
+      socks_sleep_3: -873710669
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
