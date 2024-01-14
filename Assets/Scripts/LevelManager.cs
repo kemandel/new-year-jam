@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Experimental.AI;
+using Unity.VisualScripting;
 
 public delegate void PlayerEvent(string characterName);
 
@@ -9,6 +11,8 @@ public class LevelManager : MonoBehaviour
 {
     public static event PlayerEvent AddPlayerEvent;
     public GameSettings defaultSettings;
+    public Canvas fadeCanvas;
+
     public static GameSettings Settings {get; private set;}
     public static PlayerController activePlayer {get; private set;}
     public static List<PlayerController> players {get; set;}
@@ -28,6 +32,20 @@ public class LevelManager : MonoBehaviour
     void LateUpdate()
     {
         PlayerController.playerInputRecorded = false;
+    }
+
+    public IEnumerator FadeCoroutine(bool fadeIn, float fadeDuration)
+    {
+        float startTime = Time.time;
+        float passedTime = 0;
+        while (passedTime < fadeDuration)
+        {
+            float ratio = passedTime / fadeDuration;
+            fadeCanvas.GetComponentInChildren<Image>().color = new Color(0,0,0, fadeIn ? Mathf.Lerp(1,0,ratio) : Mathf.Lerp(0,1,ratio));
+            yield return null;
+            passedTime = Time.time - startTime;
+        }
+        fadeCanvas.GetComponentInChildren<Image>().color = new Color(0,0,0, fadeIn ? 0 : 1);
     }
 
     public static void AddPlayer(PlayerController player)
