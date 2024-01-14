@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
         SetPlayerUI();
     }
 
-    void SetPlayerUI()
+    void Update()
     {
         if (!inQuit && Input.GetKeyDown(KeyCode.Escape))
         {
@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
         quitMenu.gameObject.SetActive(false);
     }
 
-    void SetPlayerUI(string playerName)
+    void SetPlayerUI()
     {
         for (int x = 0; x < LevelManager.players.Count; x++)
         {

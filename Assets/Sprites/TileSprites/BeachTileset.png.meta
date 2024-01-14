@@ -120,7 +120,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 68
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -140,8 +140,8 @@ TextureImporter:
       name: BeachTileset_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 68
+        x: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -161,8 +161,8 @@ TextureImporter:
       name: BeachTileset_2
       rect:
         serializedVersion: 2
-        x: 68
-        y: 68
+        x: 64
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -183,7 +183,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 34
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -203,8 +203,8 @@ TextureImporter:
       name: BeachTileset_4
       rect:
         serializedVersion: 2
-        x: 34
-        y: 34
+        x: 32
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -224,8 +224,8 @@ TextureImporter:
       name: BeachTileset_5
       rect:
         serializedVersion: 2
-        x: 68
-        y: 34
+        x: 64
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -266,7 +266,7 @@ TextureImporter:
       name: BeachTileset_7
       rect:
         serializedVersion: 2
-        x: 34
+        x: 32
         y: 0
         width: 32
         height: 32
@@ -287,7 +287,7 @@ TextureImporter:
       name: BeachTileset_8
       rect:
         serializedVersion: 2
-        x: 68
+        x: 64
         y: 0
         width: 32
         height: 32
@@ -300,27 +300,6 @@ TextureImporter:
       bones: []
       spriteID: 68e97b97f76bf80419ae8052b127c209
       internalID: -93800729
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BeachTileset_9
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f9b07df961bcceb48a7a4c480637580a
-      internalID: -1033698507
       vertices: []
       indices: 
       edges: []
@@ -339,7 +318,6 @@ TextureImporter:
       BeachTileset_4: -450502297
       BeachTileset_5: 1754788366
       BeachTileset_0: -569737239
-      BeachTileset_9: -1033698507
       BeachTileset_8: -93800729
       BeachTileset_6: 1191120650
       BeachTileset_7: 216495190
