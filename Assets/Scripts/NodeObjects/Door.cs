@@ -55,6 +55,7 @@ public class Door : NodeObject, IInteractable
     private void OpenDoor()
     {
         FindObjectOfType<C_Grid>().NodeFromWorldPoint(transform.position).currentObject = null;
+        FindObjectOfType<C_Grid>().NodeFromWorldPoint(transform.position + new Vector3(0,FindObjectOfType<C_Grid>().nodeRadius * 2)).currentObject = null;
         GetComponentInChildren<SpriteRenderer>().sprite = null;
     }
 }
